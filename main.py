@@ -64,5 +64,5 @@ from google.cloud import translate_v2
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
 
 translate_client = translate_v2.Client()
-output = translate_client.translate(text, target_language="en")
+output = translate_client.translate(text, source_language="hi", target_language="en")
 print(output)
