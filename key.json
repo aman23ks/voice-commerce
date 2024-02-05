@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ringed-griffin-413409",
+  "private_key_id": "a34e27ee07eecd7548a394113b34ded2eedf56c4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSH5ymbyDtz5sX\napzpOeSYZ3w6VfE6uJguNsqORwtfQ8tAlUYq307p2GrMR095967hJal/K26bcpgr\nZvw+O0LIfKeJ668rQM8UT/PaYuAQfkk9wC0AJ2dEGgNRwqt5Vx7Us2FGk5h7cUmC\nS91gOnMmpMSImvvPYhJbAC8PivM/7kVXKkIsMtdnXn4+CeJwwtduYkRR4NzQvNxs\nhd354rAfaHRSRJzSe1qf+JkrLb3TUkQohHibayKZRo6MxT2Y0m3sw4uS84p7Lqpb\n23BqtJDYp6KqGdVg+z/fheXD9RPI13GFdvlTtNHdSseENjs+AMPQuQvG8qMNCsMt\nWZoHzwr/AgMBAAECggEAVi3O8tf7Om3+XwFD78flwLgY1FgxQvM4vyOLugTbXiwQ\n7aELkUPbOr+fNb89knmKSR9IQDcQ+0JptMtdQyzM/CtcD44RXv0KsXsFOZl56mnR\nIjlye3CtwtmkaOEdsPuRUo1rpSWd0WsqSf1Rg0kVt1C2poxiILFJc/dEVeyYTaxt\n+a+E4bwwvHqQ75jaSdSuCFd10tmW1VUI7lSGp4FYV+hh3yhhqxd1YkbTyq14M/0n\nWCKh6K3U24iC703uPZMaNpWbzsErAJtiaYsYR7lVtp5UXspNwhyq6cNe4hGRJEOw\n/TB/q2qsNlTFbuerCQlXty4UKz4cSA2k6DqcXEzsyQKBgQD7ThoS61+ARBH8eKAi\nOJS4UMcNurGdlbEat2nA60dCLZtG/EvqVfRlqBAEyw3HbxEQKUvefewH0DFCZYm4\ns3Y/WMbm1/go1ZonuaBHhQlywaMPH5YDRnNtJc3xm2E7Mz7XnoSV/xVcpO/H9AYz\nYRJZ/1JOfDYi83KPpZET8WXCzQKBgQDWDI3LGq460PDGl1jCxmLA3UQQyUSpC3vH\nAkoO52L7L3uJvl95YAK4CQpcdE3XbJgvIwqtEypOTsem65ftSRWXQtor+sZpDJls\nsNOpj5BqydfZ2OlS87wNrQoJTreu9yJ4dsQ+qdAyUocscbWWsLAeP49MrNeSlbbS\nZQjCNuU8+wKBgFE6MmVRHOI5nlKrrp7BCRj2SxCd+pED9GW9SPppUfQLB7iPDf6l\nX8SH6P2ToFWJCcvefT5iFyuDWJisdzJzF1JsYIX24qhYOmaCslLLpn0oJ4tY20Ud\nvWtXH9TrMydObg6FlzdgZsg2K6bGskZjJupeA32I2nq7k5jonBcFHK41AoGBANTI\nJAicnEjRvhjdCRqO1kq9atV5Du0xAjniN7a7JHVpTVivy/8/h1RlgExKPbuCM4Lg\nRdOpsqunuudfWmdC+NimV3XS1HxHTxlyaucrVTgjMJVaARA6RV4e/1QjUYv4FudD\nwXA9pT7xNXjkDM0hFeLr8ksZoy8P728VivBuW9ITAoGBANDOBcMOArMwaWozLTDh\nJ7RE5X7T/P9/ikfRpbT9qpfBw9VDt/0TwEJhajD0AknEB9qq7kJo1jwRAD9YYyaT\nQR+1hkF/yAaHWrAumpx0s1+YAcm+uU2cmSIaEGIbY3mMr98Ec+ukRq16UFDDyMdL\npq1f9i9zOCVWeuvbGM/5DKkl\n-----END PRIVATE KEY-----\n",
+  "client_email": "service@ringed-griffin-413409.iam.gserviceaccount.com",
+  "client_id": "104050505664552090670",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service%40ringed-griffin-413409.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
