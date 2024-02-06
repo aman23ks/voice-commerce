@@ -1,5 +1,8 @@
 import pyaudio
 import wave
+from google.cloud import speech
+import os
+from google.cloud import translate_v2
 
 CHUNK=1024
 FORMAT=pyaudio.paInt16
@@ -7,6 +10,8 @@ CHANNELS=1
 RATE=44100
 
 p = pyaudio.PyAudio()
+
+#Record Audio
 
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
@@ -34,9 +39,6 @@ wf.setframerate(RATE)
 wf.writeframes(b''.join(frames))
 wf.close()
 
-
-from google.cloud import speech
-
 client = speech.SpeechClient.from_service_account_file('key.json')
 file_name = 'output.wav'
 
@@ -58,9 +60,6 @@ response = client.recognize(
 
 text = response.results[0].alternatives[0].transcript
 
-import os
-
-from google.cloud import translate_v2
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
 
 translate_client = translate_v2.Client()
