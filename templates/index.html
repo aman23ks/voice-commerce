@@ -1,0 +1,49 @@
+{%block content %}
+{% include "header.html" %}
+<!-- Main Content -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Product Input Form</h1>
+
+  <!-- Audio Input Form for Product Name -->
+  <form id="audioForm" class="mb-4">
+    <div class="form-group">
+      <label for="productName">Say your product name</label>
+      <div class="input-group">
+        <div class="input-group-append">
+          <button id="startRecording" class="btn btn-primary" type="button">Start Recording</button>
+          <button id="stopRecording" class="btn btn-danger" type="button" disabled>Stop Recording</button>
+        </div>
+      </div>
+    </div>
+    <button type="submit" id="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <!-- Audio Input Form for Product Price -->
+  <form id="audioFormPrice" class="mb-4">
+    <div class="form-group">
+      <label for="productPrice">Say your product price</label>
+      <div class="input-group">
+        <div class="input-group-append">
+          <button id="startRecordingPrice" class="btn btn-primary" type="button">Start Recording</button>
+          <button id="stopRecordingPrice" class="btn btn-danger" type="button" disabled>Stop Recording</button>
+        </div>
+      </div>
+    </div>
+    <button type="submit" id="submitPrice" class="btn btn-success">Submit</button>
+  </form>
+
+  <!-- Add Product Form -->
+  <form action="/add-product" method="post">
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" name="product_name" class="form-control" placeholder="Product name">
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Product Price</label>
+      <input type="text" id="productPrice" name="product_price" class="form-control" placeholder="Product price">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+</div>
+{% include "footer.html" %}
+{% endblock %}
