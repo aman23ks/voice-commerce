@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const startRecordingBtnPrice = document.getElementById('startRecordingPrice');
     const stopRecordingBtnPrice = document.getElementById('stopRecordingPrice');
     const submitBtnPrice = document.getElementById('submitPrice');
-  
+
     let mediaRecorder;
     let audioChunks = [];
     
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
     stopRecordingBtnPrice.addEventListener('click', stopRecordingPrice);
     audioFormPrice.addEventListener('submit', handleSubmitPrice);
 
-  
     async function startRecording() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -118,8 +117,19 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
           console.error('Error sending audio data:', error);
         });
-      }    
+      }
+
 })
+
+var copybtn = document.getElementById("copy-btn");
+var link = document.getElementById("link");
+copybtn.onclick = function(){
+  navigator.clipboard.writeText(link.innerHTML);
+  copybtn.innerHTML = "Copied"
+  setTimeout(function(){
+    copybtn.innerHTML = "Copy"
+  }, 2000)
+}
 
 $('#myTab button').on('click', function (event) {
   event.preventDefault()

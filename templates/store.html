@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voice commerce</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/fonts/HelvNeue55_W1G.woff2" rel="preload" as="font"
+        type="font/woff2" integrity="sha384-R6e0PFLMMV6HBvkQK22ecNfjOzyh89wSndiTC71MuvoaOnhIYgOAGVC0gW0kVN16"
+        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/fonts/HelvNeue75_W1G.woff2" rel="preload" as="font"
+        type="font/woff2" integrity="sha384-ylOkwNNvSwXpWNbpEhI45ruJTXyfQbIb42IxMvSGGcndZBpZ9iAmOFSUl4/Goeqz"
+        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/css/orange-helvetica.min.css" rel="stylesheet"
+        integrity="sha384-A0Qk1uKfS1i83/YuU13i2nx5pk79PkIfNFOVzTcjCMPGKIDj9Lqx9lJmV7cdBVQZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/css/boosted.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+</head>
+
+<body>
+    <section id="title">
+        <div>
+            <nav class="navbar">
+                <div class="navbar-content">
+                    <a href="#" class="navbar-link">Store</a>
+                    <a href="{{url_for('cart')}}" class="navbar-link">Cart</a>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <div class="container">
+        <h1>Store</h1>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.product_name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{product.product_price}}</h6>
+                        <div class="p-3 m-0 border-0 bd-example">
+                            <div class="input-group quantity-selector">
+                                <input type="number" id="inputQuantitySelector" class="form-control" aria-live="polite"
+                                    data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10"
+                                    step="1" data-bs-round="0" aria-label="Quantity selector">
+                                <button type="button" class="btn btn-icon btn-secondary"
+                                    aria-describedby="inputQuantitySelector" data-bs-step="down">
+                                    <span class="visually-hidden">Step down</span>
+                                </button>
+                                <button type="button" class="btn btn-icon btn-secondary"
+                                    aria-describedby="inputQuantitySelector" data-bs-step="up">
+                                    <span class="visually-hidden">Step up</span>
+                                </button>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link btn btn-dark">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet aliquet mauris.</p>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-form">
+                <h2>Contact Us</h2>
+                <form action="#" method="post">
+                    <input type="email" name="email" class="text-input contact-input" placeholder="Your email address">
+                    <textarea name="message" class="text-input contact-input" placeholder="Your message"></textarea>
+                    <button type="submit" class="btn contact-btn">Send</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Your Website Name. All rights reserved.
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/js/boosted.bundle.min.js"></script>
+    <script src="../static/js/service.js"></script>
+</body>
+
+</html>

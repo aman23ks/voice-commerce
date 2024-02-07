@@ -2,6 +2,7 @@
 {% include "header.html" %}
 <div class="container">
     <h1>Your Products</h1>
+    <div style="text-align: center;" class="mb-3"><a href="{{url_for('qrcode')}}"><button class="btn btn-lg btn-dark">QR code</button></a></div>
     <div class="row">
       {% for product in products %}
       <div class="col-md-4">

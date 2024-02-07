@@ -76,6 +76,25 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+/* Clipboard */
+#link{
+  width: 350px;
+  padding: 12px 10px;
+  border: 1px solid #212121;
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 19px;
+  overflow-x: scroll;
+}
+
+#copy-btn{
+  color: #fff;
+  padding: 12px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #212121;
+}
+
 /* Footer */
 .footer {
   background-color: #333;

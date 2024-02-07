@@ -43,10 +43,6 @@ oauth.register(
     server_metadata_url=f'{appConf.get("OAUTH2_META_URL")}',
 )
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
-
 #assign URLs to have a particular route 
 @app.route("/", methods=['POST', 'GET'])
 def register():
@@ -184,7 +180,6 @@ def add_product():
 
 @app.route("/<id>/delete/")
 def delete(id):
-    print(type(id))
     prod.update_one({
         "user_email": session["email"],
         "products": {
@@ -196,6 +191,24 @@ def delete(id):
         "$pull": {"products": { "id": id } }
     })
     return redirect(url_for('products'))
+
+@app.route("/cart")
+def cart():
+    return render_template("cart.html")
+
+@app.route("/qrcode", methods=['GET'])
+def qrcode():
+    email = session['email']
+    user = users.find_one({"email": email})
+    user_id = str(user['_id'])
+    return render_template('qrcode.html', user_id=user_id)
+
+@app.route("/<id>/store", methods=['GET', 'POST'])
+def store(id):
+    user = users.find_one({"_id": ObjectId(id)})
+    user_email = user['email']
+    products = prod.find_one({"user_email": user_email})['products']
+    return render_template('store.html', products=products)
 
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
