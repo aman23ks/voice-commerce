@@ -2,9 +2,11 @@ import os
 from flask import Flask, render_template, url_for, request, redirect, jsonify, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from bson import Binary
 from google.cloud import speech
 from google.cloud import translate_v2
 import bcrypt
+import uuid
 from authlib.integrations.flask_client import OAuth
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
@@ -14,6 +16,9 @@ app = Flask(__name__)
 client = MongoClient('localhost', 27017)
 
 app.secret_key = "testing"
+
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 
 appConf = {
     "OAUTH2_CLIENT_ID":"220229249958-hj34kiqah442i47jldiqft19hdapu9bh.apps.googleusercontent.com",
@@ -37,6 +42,10 @@ oauth.register(
     },
     server_metadata_url=f'{appConf.get("OAUTH2_META_URL")}',
 )
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
 
 #assign URLs to have a particular route 
 @app.route("/", methods=['POST', 'GET'])
@@ -147,11 +156,10 @@ def index():
 
 @app.route("/products", methods=['GET'])
 def products():
-    all_products = prod.find()
-    products = []
-    for product in all_products:
-        products.append(product)
-    return render_template('products.html', products=products)
+    user_products = prod.find_one({"user_email": session['email']})
+    if user_products is None or user_products['products'] == []:
+        return render_template('no_products.html')
+    return render_template('products.html', products=user_products['products'])
 
 @app.route("/orders", methods=['GET'])
 def orders():
@@ -162,16 +170,31 @@ def add_product():
     if request.method == 'POST':
         product_name = request.form['product_name']
         product_price = request.form['product_price']
-    prod.insert_one({"product_name": product_name, "product_price": product_price})
-    all_products = prod.find()
-    products = []
-    for product in all_products:
-        products.append(product)
-    return render_template('products.html', products=products)
+    user_products = prod.find_one({"user_email": session['email']})
+    if user_products:
+        new_product = {"id": str(uuid.uuid1()), "product_name": product_name, "product_price": product_price}
+        prod.update_one({"user_email": session["email"]}, {"$push": {"products": new_product}})
+        user_products = prod.find_one({"user_email": session['email']})
+        return render_template('products.html', products=user_products['products'])
+    else:
+        new_product = {"id": str(uuid.uuid1()), "product_name": product_name, "product_price": product_price}
+        prod.insert_one({"user_email": session["email"], "products": [new_product]})
+        user_products = prod.find_one({"user_email": session['email']})
+        return render_template('products.html', products=user_products['products'])
 
 @app.route("/<id>/delete/")
 def delete(id):
-    prod.delete_one({"_id": ObjectId(id)})
+    print(type(id))
+    prod.update_one({
+        "user_email": session["email"],
+        "products": {
+            "$elemMatch": {
+                "id": id
+            }
+        }
+    }, {
+        "$pull": {"products": { "id": id } }
+    })
     return redirect(url_for('products'))
 
 @app.route('/process_audio', methods=['POST'])
