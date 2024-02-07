@@ -1,0 +1,20 @@
+{%block content %}
+{% include "header.html" %}
+<div class="container">
+    <h1>Your Products</h1>
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.product_name }}</h5>
+            <p class="card-text">{{ product.product_price }}</p>
+            <a href="{{url_for('delete', id=product['_id'])}}" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% include "footer.html" %}
+{% endblock %}
