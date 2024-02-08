@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/fonts/HelvNeue55_W1G.woff2" rel="preload" as="font"
+        type="font/woff2" integrity="sha384-R6e0PFLMMV6HBvkQK22ecNfjOzyh89wSndiTC71MuvoaOnhIYgOAGVC0gW0kVN16"
+        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/fonts/HelvNeue75_W1G.woff2" rel="preload" as="font"
+        type="font/woff2" integrity="sha384-ylOkwNNvSwXpWNbpEhI45ruJTXyfQbIb42IxMvSGGcndZBpZ9iAmOFSUl4/Goeqz"
+        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/css/orange-helvetica.min.css" rel="stylesheet"
+        integrity="sha384-A0Qk1uKfS1i83/YuU13i2nx5pk79PkIfNFOVzTcjCMPGKIDj9Lqx9lJmV7cdBVQZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/css/boosted.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,82 +31,49 @@
             </nav>
         </div>
     </section>
-<div class="container">
-    <h1>Cart</h1>
-</div>
-</div>
-
-
-<div class="container mt-5 mb-5">
-  <div class="d-flex justify-content-center row">
-      <div class="col-md-8">
-          <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-              <div class="mr-1"><img class="rounded" src="https://i.imgur.com/XiFJkhI.jpg" width="70"></div>
-              <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-                  <div class="d-flex flex-row product-desc">
-                      <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
-                      <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
-                  </div>
-              </div>
-              <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                  <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
-              <div>
-                  <h5 class="text-grey">$20.00</h5>
-              </div>
-              <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+    <div class="container">
+      <h1>Cart</h1>
+    
+      <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.productName}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{product.productPrice}}</h6>
+                    <div class="p-3 m-0 border-0 bd-example">
+                        <div class="input-group quantity-selector">
+                            <input type="number" id="inputQuantitySelector" class="input-qty-selector" aria-live="polite"
+                                   data-bs-step="counter" name="quantity" title="quantity" value={{product.quantity}}
+                                   step="1" data-bs-round="0" aria-label="Quantity selector" readonly>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+      <div class="checkout-section">
+        <h2>Checkout</h2>
+        <form action="/order" method="post">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
           </div>
-          <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-              <div class="mr-1"><img class="rounded" src="https://i.imgur.com/XiFJkhI.jpg" width="70"></div>
-              <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-                  <div class="d-flex flex-row product-desc">
-                      <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
-                      <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
-                  </div>
-              </div>
-              <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                  <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
-              <div>
-                  <h5 class="text-grey">$20.00</h5>
-              </div>
-              <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
           </div>
-          <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-              <div class="mr-1"><img class="rounded" src="https://i.imgur.com/XiFJkhI.jpg" width="70"></div>
-              <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-                  <div class="d-flex flex-row product-desc">
-                      <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
-                      <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
-                  </div>
-              </div>
-              <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                  <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
-              <div>
-                  <h5 class="text-grey">$20.00</h5>
-              </div>
-              <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
+          <div class="form-group">
+            <label for="phone">Phone number:</label> 
+            <input type="tel" id="phone" name="phone" required>
           </div>
-          <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-              <div class="mr-1"><img class="rounded" src="https://i.imgur.com/XiFJkhI.jpg" width="70"></div>
-              <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">Basic T-shirt</span>
-                  <div class="d-flex flex-row product-desc">
-                      <div class="size mr-1"><span class="text-grey">Size:</span><span class="font-weight-bold">&nbsp;M</span></div>
-                      <div class="color"><span class="text-grey">Color:</span><span class="font-weight-bold">&nbsp;Grey</span></div>
-                  </div>
-              </div>
-              <div class="d-flex flex-row align-items-center qty"><i class="fa fa-minus text-danger"></i>
-                  <h5 class="text-grey mt-1 mr-1 ml-1">2</h5><i class="fa fa-plus text-success"></i></div>
-              <div>
-                  <h5 class="text-grey">$20.00</h5>
-              </div>
-              <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
-          </div>
-          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><input type="text" class="form-control border-0 gift-card" placeholder="discount code/gift card"><button class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button></div>
-          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button></div>
+          <button type="submit" class="btn btn-primary" id="place-order-btn">Place Order</button>
+        </form>
       </div>
-  </div>
-</div>
-
-
+    </div>
 
 
 
