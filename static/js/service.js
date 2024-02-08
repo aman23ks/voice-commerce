@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     startRecordingBtnPrice.addEventListener('click', startRecordingPrice);
     stopRecordingBtnPrice.addEventListener('click', stopRecordingPrice);
     audioFormPrice.addEventListener('submit', handleSubmitPrice);
+
   
     async function startRecording() {
       try {
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
           console.error('Error sending audio data:', error);
         });
-      }      
+      }    
 })
 
 $('#myTab button').on('click', function (event) {
