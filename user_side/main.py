@@ -32,6 +32,7 @@ db = client.flask_database
 # This is a products collection
 prod = db.products
 users = db.users
+user_cart = db.cart
 
 if __name__ == "__main__":
     app.run(port=5001, debug=True)
