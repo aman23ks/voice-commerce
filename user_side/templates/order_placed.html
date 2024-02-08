@@ -32,36 +32,7 @@
         </div>
     </section>
     <div class="container">
-        <h1>Store</h1>
-        <div class="row">
-            {% for product in products %}
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{product.product_name}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{product.product_price}}</h6>
-                        <div class="p-3 m-0 border-0 bd-example">
-                            <div class="input-group quantity-selector">
-                                <input type="number" id="inputQuantitySelector" class="form-control  input-qty-selector" aria-live="polite"
-                                       data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10000"
-                                       step="1" data-bs-round="0" aria-label="Quantity selector">
-                                <button type="button" class="btn btn-icon btn-secondary"
-                                        aria-describedby="inputQuantitySelector" data-bs-step="down">
-                                    <span class="visually-hidden">Step down</span>
-                                </button>
-                                <button type="button" class="btn btn-icon btn-secondary"
-                                        aria-describedby="inputQuantitySelector" data-bs-step="up">
-                                    <span class="visually-hidden">Step up</span>
-                                </button>
-                            </div>
-                        </div>
-                        <a href="#" class="card-link btn btn-dark add-to-cart-btn" id="addToCartBtn">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+        <h1>Order Placed</h1>
     </div>
 
      <!-- Hidden input field for session ID -->
