@@ -16,8 +16,8 @@ client = MongoClient('localhost', 27017)
 app.secret_key = "testing"
 
 appConf = {
-    "OAUTH2_CLIENT_ID":"220229249958-hj34kiqah442i47jldiqft19hdapu9bh.apps.googleusercontent.com",
-    "OAUTH2_CLIENT_SECRET":"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",
+    "OAUTH2_CLIENT_ID":"378032575715-lvv8a51t9rm1gs5f4vrobtgfqun9kf3j.apps.googleusercontent.com",
+    "OAUTH2_CLIENT_SECRET":"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",
     "OAUTH2_META_URL": "https://accounts.google.com/.well-known/openid-configuration",
     "FLASK_SECRET": "77ac1e43-41d2-4f65-a6bd-36bfa405773b",
     "FLASK_PORT": 5000
