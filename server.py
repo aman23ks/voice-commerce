@@ -8,6 +8,7 @@ from google.cloud import translate_v2
 import bcrypt
 import uuid
 from authlib.integrations.flask_client import OAuth
+import jwt
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
 
@@ -21,8 +22,8 @@ app.secret_key = "testing"
 # login_manager.init_app(app)
 
 appConf = {
-    "OAUTH2_CLIENT_ID":"220229249958-hj34kiqah442i47jldiqft19hdapu9bh.apps.googleusercontent.com",
-    "OAUTH2_CLIENT_SECRET":"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",
+    "OAUTH2_CLIENT_ID":"378032575715-lvv8a51t9rm1gs5f4vrobtgfqun9kf3j.apps.googleusercontent.com",
+    "OAUTH2_CLIENT_SECRET":"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",
     "OAUTH2_META_URL": "https://accounts.google.com/.well-known/openid-configuration",
     "FLASK_SECRET": "77ac1e43-41d2-4f65-a6bd-36bfa405773b",
     "FLASK_PORT": 5000
@@ -129,8 +130,6 @@ def logout():
 
 @app.route("/google-login")
 def googleLogin():
-    if "user" in session:
-        abort(404)
     return oauth.Vcom.authorize_redirect(redirect_uri=url_for("googleCallback", _external=True))
 
 @app.route("/google-signin")
@@ -143,8 +142,18 @@ def googleCallback():
     # make sure you enable the Google People API in the Google Developers console under "Enabled APIs & services" section
 
     # set complete user information in the session
-    session["user"] = token
-    return redirect(url_for("logged_in"))
+    email = token['userinfo']['email']
+    email_found = users.find_one({"email": email})
+    session["email"] = email
+    name = token['userinfo']['name']
+    
+    if not email_found:
+        #assing them in a dictionary in key value pairs
+        user_input = {'name': name, 'email': email}
+        #insert it in the record collection
+        users.insert_one(user_input)
+
+    return render_template('index.html', email=email)
 
 @app.route("/index", methods=['GET'])
 def index():
