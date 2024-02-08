@@ -25,9 +25,13 @@ def cart():
     product_name = data.get("productName")
     product_price = data.get("productPrice")
     quantity = int(data.get("quantity", 0))
+    id = data.get("index")
     print(product_name)
     print(product_price)
     print(quantity)
+    print(id)
+    user_cart.insert_one({"admin_id": user_id, "products": []})
+
     return render_template("cart.html")
 
 # This is a mongodb database
@@ -36,6 +40,7 @@ db = client.flask_database
 # This is a products collection
 prod = db.products
 users = db.users
+user_cart = db.cart
 
 if __name__ == "__main__":
     app.run(port=5001, debug=True)

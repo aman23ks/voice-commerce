@@ -1,12 +1,16 @@
-const addToCartBtns = document.querySelectorAll("addToCartBtn");
+const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+const productTitleElements = document.querySelectorAll('.card-title');
+const productPriceElements = document.querySelectorAll('.card-subtitle');
+const quantityInputs = document.querySelectorAll('.input-qty-selector');
 console.log(addToCartBtns)
-addToCartBtns.forEach(btn => {
+addToCartBtns.forEach((btn, index) => {
+    console.log(btn)
     btn.addEventListener("click", () => {
-        const productName = document.querySelector(".card-title").textContent;
-        const productPrice = document.querySelector(".card-subtitle").textContent;
-        const quantity = document.getElementById("inputQuantitySelector").value;
+        const productName = productTitleElements[index].textContent;
         console.log(productName);
+        const productPrice = productPriceElements[index].textContent;
         console.log(productPrice);
+        const quantity = quantityInputs[index].value;
         console.log(quantity);
         // Send data to backend using your preferred method (e.g., AJAX fetch)
         fetch("http://127.0.0.1:5001/cart", {
@@ -18,6 +22,7 @@ addToCartBtns.forEach(btn => {
             productName,
             productPrice,
             quantity,
+            index
           }),
         })
           .then((response) => {
