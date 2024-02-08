@@ -2,6 +2,9 @@ const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 const productTitleElements = document.querySelectorAll('.card-title');
 const productPriceElements = document.querySelectorAll('.card-subtitle');
 const quantityInputs = document.querySelectorAll('.input-qty-selector');
+const sessionId = document.getElementById('session-id').value;
+const urlSegments = window.location.pathname.split('/');
+const id = urlSegments[urlSegments.length - 2];
 console.log(addToCartBtns)
 addToCartBtns.forEach((btn, index) => {
     console.log(btn)
@@ -12,13 +15,15 @@ addToCartBtns.forEach((btn, index) => {
         console.log(productPrice);
         const quantity = quantityInputs[index].value;
         console.log(quantity);
+
         // Send data to backend using your preferred method (e.g., AJAX fetch)
-        fetch("http://127.0.0.1:5001/cart", {
+        fetch(`http://127.0.0.1:5001/${id}/cart`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            sessionId: sessionId,
             productName,
             productPrice,
             quantity,

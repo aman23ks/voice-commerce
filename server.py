@@ -79,8 +79,9 @@ def register():
             #find the new created account and its email
             user_data = users.find_one({"email": email})
             new_email = user_data['email']
+            session["email"] = new_email
             #if registered redirect to logged in as the registered user
-            return render_template('logged_in.html', email=new_email)
+            return render_template('index.html', email=new_email)
     return render_template('register.html')
 
 @app.route("/login", methods=["POST", "GET"])
