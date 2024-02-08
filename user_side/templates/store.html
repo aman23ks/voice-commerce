@@ -25,7 +25,7 @@
         <div>
             <nav class="navbar">
                 <div class="navbar-content">
-                    <a href="#" class="navbar-link">Store</a>
+                    <a href="{{url_for('index')}}" class="navbar-link">Store</a>
                     <a href="{{url_for('cart')}}" class="navbar-link">Cart</a>
                 </div>
             </nav>
@@ -43,19 +43,19 @@
                         <div class="p-3 m-0 border-0 bd-example">
                             <div class="input-group quantity-selector">
                                 <input type="number" id="inputQuantitySelector" class="form-control" aria-live="polite"
-                                    data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10"
-                                    step="1" data-bs-round="0" aria-label="Quantity selector">
+                                       data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10"
+                                       step="0.5" data-bs-round="0" aria-label="Quantity selector">
                                 <button type="button" class="btn btn-icon btn-secondary"
-                                    aria-describedby="inputQuantitySelector" data-bs-step="down">
+                                        aria-describedby="inputQuantitySelector" data-bs-step="down">
                                     <span class="visually-hidden">Step down</span>
                                 </button>
                                 <button type="button" class="btn btn-icon btn-secondary"
-                                    aria-describedby="inputQuantitySelector" data-bs-step="up">
+                                        aria-describedby="inputQuantitySelector" data-bs-step="up">
                                     <span class="visually-hidden">Step up</span>
                                 </button>
                             </div>
                         </div>
-                        <a href="#" class="card-link btn btn-dark">Add to Cart</a>
+                        <a href="#" class="card-link btn btn-dark" id="addToCartBtn">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,6 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/js/boosted.bundle.min.js"></script>
-    <script src="../static/js/service.js"></script>
+    <script src="../static/js/server.js"></script>
 </body>
-
 </html>

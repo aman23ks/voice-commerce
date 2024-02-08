@@ -192,23 +192,12 @@ def delete(id):
     })
     return redirect(url_for('products'))
 
-@app.route("/cart")
-def cart():
-    return render_template("cart.html")
-
 @app.route("/qrcode", methods=['GET'])
 def qrcode():
     email = session['email']
     user = users.find_one({"email": email})
     user_id = str(user['_id'])
     return render_template('qrcode.html', user_id=user_id)
-
-@app.route("/<id>/store", methods=['GET', 'POST'])
-def store(id):
-    user = users.find_one({"_id": ObjectId(id)})
-    user_email = user['email']
-    products = prod.find_one({"user_email": user_email})['products']
-    return render_template('store.html', products=products)
 
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
