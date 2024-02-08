@@ -17,18 +17,14 @@ def store(id):
     user_email = user['email']
     products = prod.find_one({"user_email": user_email})['products']
     user_id = id
-    return render_template('store.html', products=products)
+    return render_template('store.html', products=products, id = user_id)
 
-@app.route("/cart", methods=["GET", "POST"])
-def cart():
-    data = request.json
-    product_name = data.get("productName")
-    product_price = data.get("productPrice")
-    quantity = int(data.get("quantity", 0))
-    print(product_name)
-    print(product_price)
-    print(quantity)
-    return render_template("cart.html")
+@app.route("/<id>/cart", methods=["GET", "POST"])
+def cart(id):
+    user = users.find_one({"_id": ObjectId(id)})
+    user_email = user['email']
+    products = prod.find_one({"user_email": user_email})['products']
+    return render_template("cart.html", products = products)
 
 # This is a mongodb database
 db = client.flask_database
