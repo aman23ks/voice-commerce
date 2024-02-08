@@ -5,16 +5,11 @@ const quantityInputs = document.querySelectorAll('.input-qty-selector');
 const sessionId = document.getElementById('session-id').value;
 const urlSegments = window.location.pathname.split('/');
 const id = urlSegments[urlSegments.length - 2];
-console.log(addToCartBtns)
 addToCartBtns.forEach((btn, index) => {
-    console.log(btn)
     btn.addEventListener("click", () => {
         const productName = productTitleElements[index].textContent;
-        console.log(productName);
         const productPrice = productPriceElements[index].textContent;
-        console.log(productPrice);
         const quantity = quantityInputs[index].value;
-        console.log(quantity);
 
         // Send data to backend using your preferred method (e.g., AJAX fetch)
         fetch(`http://127.0.0.1:5001/${id}/cart`, {
