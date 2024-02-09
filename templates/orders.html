@@ -24,46 +24,149 @@
                     <h1>Pending Orders</h1>
                     <div class="container">
                         <div class="row">
-                          {% for orders in orderList %}
-                          <div class="col-md-4">
-                              <div class="card">
-                                  <div class="card-body">
-                                      <h5 class="card-title">Name : {{orders.name}}</h5>
-                                      <h6 class="card-subtitle mb-2 text-muted">Address : {{orders.address}}</h6>
-                                      <h6 class="card-subtitle mb-2 text-muted">Phone : {{orders.phone}}</h6>
-                                      <h6 class="card-subtitle mb-2 text-muted">Order List</h6>
-                                      <div class="p-3 m-0 border-0 bd-example">
-                                        
-                                        <table class = "table">
-                                            <thead>
+                            {% for orders in orderList %}
+                            {% if orders.completion_status == 'Incompleted' %}
+                            <div class="col">
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Name : {{orders.name}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Address : {{orders.address}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Phone : {{orders.phone}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Order List</h6>
+                                        <div class="p-3 m-0 border-0 bd-example">
+                                            <table class="table container">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Quantity</th>
+                                                        <th scope="col">Price</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for cartItems in orders.products %}
                                                 <tr>
-                                                  <th scope="col">Name</th>
-                                                  <th scope="col">Quantity</th>
-                                                  <th scope="col">Price</th>
+                                                    <td> {{cartItems.productName}} </td>
+                                                    <td> {{cartItems.quantity}} </td>
+                                                    <td> {{cartItems.productPrice}} </td>
                                                 </tr>
-                                              </thead>
-                                          {% for cartItems in orders.products %}
-                                          <tr>
-                                            <td> {{cartItems.productName}} </td>
-                                            <td> {{cartItems.quantity}} </td>
-                                            <td> {{cartItems.productPrice}} </td>
-                                          </tr>
-                                          {% endfor %}
-
-                                        </table>
-                                      </div>
-                                      
-                                  </div>
-                              </div>
-                          </div>
-                          {% endfor %}
-                      </div>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{url_for('order_completed', id=orders[" _id"])}}"><button
+                                                    class="btn btn-success">Completed</button></a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="{{url_for('remove_order', id=orders[" _id"])}}"><button
+                                                    class="btn btn-dark">Removed</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <h1>Completed Orders</h1>
+                    <div class="container">
+                        <div class="row">
+                            {% for orders in orderList %}
+                            <p>{{orderList}}</p>
+                            {% if orders.completion_status == 'Completed' %}
+                            <div class="col">
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Name : {{orders.name}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Address : {{orders.address}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Phone : {{orders.phone}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Order List</h6>
+                                        <div class="p-3 m-0 border-0 bd-example">
+                                            <table class="table container">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Quantity</th>
+                                                        <th scope="col">Price</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for cartItems in orders.products %}
+                                                <tr>
+                                                    <td> {{cartItems.productName}} </td>
+                                                    <td> {{cartItems.quantity}} </td>
+                                                    <td> {{cartItems.productPrice}} </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{url_for('order_completed', id=orders[" _id"])}}"><button
+                                                    class="btn btn-success">Completed</button></a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="{{url_for('remove_order', id=orders[" _id"])}}"><button
+                                                    class="btn btn-dark">Removed</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <h1>Removed Orders</h1>
+                    <div class="container">
+                        <div class="row">
+                            {% for orders in orderList %}
+                            {% if orders.completion_status == 'Removed' %}
+                            <div class="col">
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Name : {{orders.name}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Address : {{orders.address}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Phone : {{orders.phone}}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Order List</h6>
+                                        <div class="p-3 m-0 border-0 bd-example">
+                                            <table class="table container">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Quantity</th>
+                                                        <th scope="col">Price</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for cartItems in orders.products %}
+                                                <tr>
+                                                    <td> {{cartItems.productName}} </td>
+                                                    <td> {{cartItems.quantity}} </td>
+                                                    <td> {{cartItems.productPrice}} </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{url_for('order_completed', id=orders[" _id"])}}"><button
+                                                    class="btn btn-success">Completed</button></a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="{{url_for('remove_order', id=orders[" _id"])}}"><button
+                                                    class="btn btn-dark">Removed</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

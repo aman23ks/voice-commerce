@@ -177,6 +177,20 @@ def orders():
         return "No Orders present"
     return render_template('orders.html', orderList = ordersList)
 
+@app.route("/<id>/order-completed")
+def order_completed(id):
+    orders.update_one({
+        "_id": ObjectId(id),
+    }, {"$set":{"completion_status": "Completed"}})
+    return redirect(url_for("orders"))
+
+@app.route("/<id>/remove-order")
+def remove_order(id):
+    orders.update_one({
+        "_id": ObjectId(id),
+    }, {"$set":{"completion_status": "Removed"}})
+    return redirect(url_for("orders"))
+
 @app.route("/add-product", methods=['POST'])
 def add_product():
     if request.method == 'POST':
