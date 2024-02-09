@@ -87,4 +87,4 @@ user_cart = db.cart
 user_order = db.order
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(port=5001, debug=True, host="0.0.0.0")
