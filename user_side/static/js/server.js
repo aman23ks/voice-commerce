@@ -11,6 +11,11 @@ addToCartBtns.forEach((btn, index) => {
         const productPrice = productPriceElements[index].textContent;
         const quantity = quantityInputs[index].value;
 
+        if (quantity === "0"){
+          alert("Cannot add to cart with 0 products")
+          return
+        }
+
         // Send data to backend using your preferred method (e.g., AJAX fetch)
         fetch(`http://127.0.0.1:5001/${id}/cart`, {
           method: "POST",
