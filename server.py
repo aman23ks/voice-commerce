@@ -169,13 +169,13 @@ def products():
 
 @app.route("/orders", methods=['GET'])
 def orders():
-    cursor = users.find({"email": session["email"]})
-    for user in cursor:
-        user_id = str(user["_id"])
-    customer_orders = admin_orders.find({"user_id":user_id})
-    for cus_or in customer_orders:
-        cus_products = cus_or['products']
-    return render_template('orders.html')
+    email = session['email']
+    user = users.find_one({"email": email})
+    user_id = str(user['_id'])
+    ordersList = orders.find({"user_id": user_id})
+    if not ordersList:
+        return "No Orders present"
+    return render_template('orders.html', orderList = ordersList)
 
 @app.route("/add-product", methods=['POST'])
 def add_product():
@@ -247,7 +247,7 @@ db = client.flask_database
 # This is a products collection
 prod = db.products
 users = db.users
-admin_orders = db.order
+orders = db.order
 
 if __name__ == "__main__":
     app.run(debug=True)
