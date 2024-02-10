@@ -131,12 +131,15 @@ copybtn.onclick = function(){
   }, 2000)
 }
 
-$('#myTab button').on('click', function (event) {
-  event.preventDefault()
-  $(this).tab('show')
-})
+// $(function () {
+//   $('#myTab li:last-child button').tab('show')
+// })
+// $('#myTab button').on('click', function (event) { 
+//   event.preventDefault()
+//   $(this).tab('show')
+// })
 
-$('#myTab button[data-target="#profile"]').tab('show') // Select tab by name
-$('#myTab li:first-child button').tab('show') // Select first tab
-$('#myTab li:last-child button').tab('show') // Select last tab
-$('#myTab li:nth-child(3) button').tab('show') // Select third tab
+// $('#myTab button[data-target="#profile"]').tab('show') // Select tab by name
+// $('#myTab li:first-child button').tab('show') // Select first tab
+// $('#myTab li:last-child button').tab('show') // Select last tab
+// $('#myTab li:nth-child(3) button').tab('show') // Select third tab
