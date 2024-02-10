@@ -8,11 +8,11 @@
             <a href="{{url_for('removed_orders')}}" class="navbar-link">Removed</a>
         </div>
     </nav>
-    <h1>Pending Orders</h1>
+    <h1>Completed Orders</h1>
     <div class="container">
         <div class="row">
             {% for orders in orderList %}
-            {% if orders.completion_status == 'Incompleted' %}
+            {% if orders.completion_status == 'Completed' %}
             <div class="col">
                 <div class="card mb-2">
                     <div class="card-body">
@@ -37,16 +37,6 @@
                                 </tr>
                                 {% endfor %}
                             </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <a href="{{url_for('order_completed', id=orders["_id"])}}"><button
-                                    class="btn btn-success">Completed</button></a>
-                        </div>
-                        <div class="col">
-                            <a href="{{url_for('remove_order', id=orders["_id"])}}"><button
-                                    class="btn btn-dark">Removed</button></a>
                         </div>
                     </div>
                 </div>
