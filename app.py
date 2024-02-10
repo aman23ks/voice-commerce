@@ -8,6 +8,7 @@ from google.cloud import translate_v2
 import bcrypt
 import uuid
 from authlib.integrations.flask_client import OAuth
+import jwt
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
 
@@ -262,5 +263,3 @@ prod = db.products
 users = db.users
 orders = db.order
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
