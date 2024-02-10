@@ -8,7 +8,6 @@ from google.cloud import translate_v2
 import bcrypt
 import uuid
 from authlib.integrations.flask_client import OAuth
-import jwt
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
 
