@@ -12,8 +12,7 @@ from authlib.integrations.flask_client import OAuth
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"key.json"
 
 app = Flask(__name__)
-
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb+srv://aman:AwAhu1zueRpKecq1@cluster0.gvygsgg.mongodb.net/')
 
 app.secret_key = "testing"
 
