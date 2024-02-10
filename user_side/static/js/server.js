@@ -17,7 +17,7 @@ addToCartBtns.forEach((btn, index) => {
         }
 
         // Send data to backend using your preferred method (e.g., AJAX fetch)
-        fetch(`https://voice-commerce-f8jp.vercel.app//${id}/cart`, {
+        fetch(`https://voice-commerce-f8jp.vercel.app/${id}/cart`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
