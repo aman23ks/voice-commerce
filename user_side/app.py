@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.secret_key = "testing"
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb+srv://aman:AwAhu1zueRpKecq1@cluster0.gvygsgg.mongodb.net/')
 global user_id
 
 @app.route("/", methods=['GET', 'POST'])
