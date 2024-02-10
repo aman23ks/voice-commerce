@@ -247,14 +247,8 @@ def qrcode():
 def process_audio():
     audio_file = request.files['audio']
     audio_data = audio_file.read()
-    audio_file_path = 'temp_audio.wav'
-    with open(audio_file_path, 'wb') as f:
-        f.write(audio_data)
     client = speech.SpeechClient.from_service_account_file('key.json')
-    file_name = 'temp_audio.wav'
-    with open(file_name, 'rb') as f:
-        wav_data = f.read()
-    audio_file = speech.RecognitionAudio(content=wav_data)
+    audio_file = speech.RecognitionAudio(content=audio_data)
     config = speech.RecognitionConfig(
         sample_rate_hertz=48000,
         enable_automatic_punctuation=True,
