@@ -172,12 +172,28 @@ def orders():
     email = session['email']
     user = users.find_one({"email": email})
     user_id = str(user['_id'])
-    ordersList = orders.find({"user_id": user_id})
+    ordersList = orders.find({"user_id": user_id, "completion_status": "Incompleted"})
     if not ordersList:
         return "No Orders present"
-    return render_template('orders.html', orderList = ordersList)
+    return render_template('orders.html', orderList=ordersList)
 
-@app.route("/<id>/order-completed")
+@app.route("/completed-orders")
+def completed_orders():
+    email = session['email']
+    user = users.find_one({"email": email})
+    user_id = str(user['_id'])
+    ordersList = orders.find({"user_id": user_id, "completion_status": "Completed"})
+    return render_template('completed_orders.html', orderList=ordersList)
+
+@app.route("/removed-orders")
+def removed_orders():
+    email = session['email']
+    user = users.find_one({"email": email})
+    user_id = str(user['_id'])
+    ordersList = orders.find({"user_id": user_id, "completion_status": "Removed"})
+    return render_template('removed_orders.html', orderList=ordersList)
+
+@app.route("/<id>/order-completed", methods=['GET', 'POST'])
 def order_completed(id):
     orders.update_one({
         "_id": ObjectId(id),
