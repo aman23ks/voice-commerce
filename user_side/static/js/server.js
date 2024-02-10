@@ -32,7 +32,7 @@ addToCartBtns.forEach((btn, index) => {
         })
           .then((response) => {
             // Handle successful response
-            console.log("Product added to cart successfully");
+            console.log("Product added to cart successfully!");
             // You might want to display a success message or update the UI
           })
           .catch((error) => {
