@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
       const formData = new FormData();
       formData.append('audio', new Blob(audioChunks));
-      fetch('http://127.0.0.1:5000/process_audio', {method: 'POST', body: formData})
+      fetch('https://voice-commerce-two.vercel.app/process_audio', {method: 'POST', body: formData})
       .then(response => response.json())
       .then(data => {
         translatedText = data["translatedText"]
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData();
         formData.append('audio', new Blob(audioChunksPrice));
     
-        fetch('http://127.0.0.1:5000/process_audio', {method: 'POST', body: formData})
+        fetch('https://voice-commerce-two.vercel.app/process_audio', {method: 'POST', body: formData})
         .then(response => response.json())
         .then(data => {
           const translatedText = data["translatedText"];
