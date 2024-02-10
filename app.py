@@ -279,5 +279,3 @@ prod = db.products
 users = db.users
 orders = db.order
 
-if __name__ == "__main__":
-    app.run(debug=True)
