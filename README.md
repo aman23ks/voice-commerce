@@ -20,4 +20,4 @@ MongoDB: NoSQL database for storing user accounts, products, and orders.\
 Google Cloud APIs: Utilizes Google Cloud's Speech-to-Text and Translation APIs for speech recognition and translation.\
 OAuth2: Integrates OAuth2 authentication for secure login using Google accounts.\
 Bcrypt: Library for password hashing.\
-Bootstrap: Frontend framework for responsive and mobile-first design.\
+Bootstrap: Frontend framework for responsive and mobile-first design.
